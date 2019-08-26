@@ -1,5 +1,5 @@
 {
-  "name": "@MichaelDMcCracken/get-metar",
+  "name": "@michaelmccracken/get-metar",
   "version": "1.0.0",
   "description": "Gets a METAR from ADDS.",
   "main": "index.js",
