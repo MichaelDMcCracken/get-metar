@@ -5,7 +5,7 @@ This library gets a METAR from the Aviation Weather Center Data Server.
 ## Usage
 
 ```js
-var getMetar = require('@MichaelDMcCracken/get-metar');
+var getMetar = require('@michaelmccracken/get-metar');
 getMetar('KRDU').then(function(obj){
     console.log(obj);
 });
