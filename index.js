@@ -18,16 +18,13 @@ function getMetar(airport) {
                 resp.statusCode == 200 &&
                 resp.headers['content-type'] == 'text/xml'
             ) {
-                // console.log(resp.body);
                 return resp.body;
             }
         })
         .then(function (xml) {
             return convert.xml2js(xml, { compact: true, spaces: 4 });
-            //return JSON.stringify(convert(xml));
         })
         .then(function (metarObj) {
-            console.log(metarObj.response.data.METAR);
             return metarObj.response.data.METAR;
         })
         .then(function (metar) {
@@ -52,12 +49,15 @@ function getObsTime(metar) {
 
 function getRawText(metar) {
     var rawtext = removeRemarks(metar.raw_text._text);
-    // var beginWx = rawtext.indexOf('KT') - 8;
     return rawtext.substring(13, rawtext.length);
+    
 }
 
-function removeRemarks(withRemarks) {
-    return withRemarks.substring(0, withRemarks.indexOf('RMK')).trim();
+function removeRemarks(rawtext) {
+    if (!rawtext.includes('RMK')){
+        return rawtext;
+    }
+    return rawtext.substring(0, rawtext.indexOf('RMK')).trim();
 }
 
 function timeFormatter(oldTime) {
@@ -74,10 +74,3 @@ function timeFormatter(oldTime) {
 }
 
 module.exports = getMetar;
-
-if (module === require.main) {
-    var airport = 'KATL';
-    getMetar(airport).then(function (obj) {
-        console.log(obj);
-    });
-}
