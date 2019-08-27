@@ -1,4 +1,4 @@
-# [@michaelmccracken/get-metar](https://github.com/MichaelDMcCracken/get-metar)
+# [@michaelmccracken/get-metar](https://www.npmjs.com/package/@michaelmccracken/get-metar)
 
 This library gets a METAR from the Aviation Weather Center Data Server.
 
@@ -6,8 +6,8 @@ This library gets a METAR from the Aviation Weather Center Data Server.
 
 ```js
 var getMetar = require('@michaelmccracken/get-metar');
-getMetar('KRDU').then(function(obj){
-    console.log(obj);
+
+getMetar('KRDU').then(function(obj) {
+  console.log(obj);
 });
 ```
-
